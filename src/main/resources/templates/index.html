@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xlmns:th="http://www,thymeleaf.org">
+    <head>
+        <title>My Site</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1 class="text-center font-bold text-4xl my-3 text-gray-700">Your University Notes</h1>
+        <nav class="mx-auto max-w-max my-5 grid grid-cols-4 gap-3 text-center">
+            <a th:href="@{/}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">Home</a>
+            <a th:href="@{/apuntes}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">Notes</a>
+            <a th:href="@{/contact}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">Contact</a>
+            <a th:href="@{/about}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">About</a>
+        </nav>    
+        <nav th:if="${sesion == null}" class="grid grid-cols-2 max-w-max gap-3 ml-auto mr-10 my-5 text-center">
+            <a th:href="@{/login}" class="font-bold border-2 border-gray-400 rounded-md p-1 hover:bg-gray-400 hover:text-white">Login</a>
+            <a th:href="@{/register}" class="font-bold border-2 border-gray-400 rounded-md p-1 hover:bg-gray-400 hover:text-white">Register</a>
+        </nav>
+        <nav th:if="${sesion != null}" class="max-w-max ml-auto mr-10 my-5 text-center">
+            <form th:action="@{/logout}" method="POST">
+                <button class="font-bold border-2 border-gray-400 rounded-md p-1 hover:bg-gray-400 hover:text-white">Logout</button>
+            </form>
+        </nav>
+    </body>
+</html>

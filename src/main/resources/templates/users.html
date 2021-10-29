@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xlmns:th="http://www,thymeleaf.org">
+    <head>
+        <title>My Site</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/6957f9fdd4.js" crossorigin="anonymous"></script>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1 class="text-center font-bold text-4xl">List of users</h1>
+        <nav class="mx-auto max-w-max my-5 grid grid-cols-4 gap-3 text-center">
+            <a th:href="@{/}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">Home</a>
+            <a th:href="@{/apuntes}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">Notes</a>
+            <a th:href="@{/contact}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">Contact</a>
+            <a th:href="@{/about}" class="font-bold border-2 border-gray-400 rounded-md p-2 hover:bg-gray-400 hover:text-white block">About</a>
+        </nav>    
+        <nav class="grid grid-cols-3 max-w-max gap-3 ml-auto my-5 text-center">
+            <form th:action="@{/logout}" method="POST">
+                <button type="submit" class="font-bold border-2 border-gray-400 rounded-md p-3 hover:bg-gray-400 hover:text-white">Logout</button>
+            </form>
+        </nav>
+        
+        <div class="grid grid-cols-5 w-1/2 mx-auto text-center font-bold text-xl my-3 bg-gray-600 text-gray-300 rounded-md p-2">
+            <p>Id</p>
+            <p>Usuario</p>
+            <p>Email</p>
+            <p>Edit</p>
+            <p>Delete</p>
+        </div>
+        <div th:each="user: ${listUsers}" class="grid grid-cols-5 w-1/2 mx-auto text-center p-3 border-2 border-gray-500 my-2 rounded-md">
+            <p th:text="${user.id}">Id</p>
+            <p th:text="${user.usuario}">Usuario</p>
+            <p th:text="${user.email}">Email</p>
+            <button class="text-green-600 text-xl"><i class="fas fa-edit"></i></button>
+            <button class="text-red-500 text-xl"><i class="fas fa-trash"></i></button>
+        </div>
+    </body>
+</html>
