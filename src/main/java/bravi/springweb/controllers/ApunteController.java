@@ -24,7 +24,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class ApunteController {
     
     @Autowired
-            ApunteService apunteService;
+    ApunteService apunteService;
     
     @GetMapping("")
     public String obtenerApuntes(Model model, Principal principal)
